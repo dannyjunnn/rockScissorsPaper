@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script>
+	let losses = 0;
+	let wins = 0;
+	let draws = 0;
+
+	function computerPlay() {
+		let num = Math.floor(Math.random() * 9);
+		let hand;
+
+		switch(true){
+			case (num < 3):
+				hand = 'ROCK'
+				break;
+			case (num >= 3 && num < 6):
+				hand = "SCISSORS"
+				break;
+			case (num >= 6):
+				hand = "PAPER"
+				break;
+		}
+		return hand;
+	}
+
+	function playRound(playerSelection, computerSelection) {
+		
+		if (playerSelection == 'ROCK') {
+			if (computerSelection == 'ROCK') {
+				draws++;
+				return console.log('It\'s a draw!');
+			} else if (computerSelection == 'SCISSORS') {
+				wins++;
+				return console.log('You win! Rock wins scissors.');
+			} else {
+				losses++;
+				return console.log('Computer wins! Paper wins rock.');
+			}
+		} else if (playerSelection == 'SCISSORS') {
+			if (computerSelection == 'ROCK') {
+				losses++;
+				return console.log('Computer wins! Rock wins scissors.');
+			} else if (computerSelection == 'SCISSORS') {
+				draws++;
+				return console.log('It\'s a draw!');
+			} else {
+				wins++;
+				return console.log('You win! Scissors wins paper.');
+			}
+		} else {
+			if (computerSelection == 'ROCK') {
+				wins++;
+				return console.log('You win! Paper wins rock.');
+			} else if (computerSelection == 'SCISSORS') {
+				losses++;
+				return console.log('Computer wins! Scissors win paper.');
+			} else {
+				draws++;
+				return console.log('It\'s a draw!');
+			}
+		}
+	}
+
+	function game() {
+		let playerSelection = window.prompt('Pick your hand!');
+		playerSelection = playerSelection.toUpperCase();
+		playRound(playerSelection, computerPlay());
+
+		console.log('You won ' + wins + ' times and lost ' + losses + ' times. There were ' + draws + ' draws!');
+		}
+
+</script>
+</body>
+</html>
