@@ -66,9 +66,16 @@
 	}
 
 	function game() {
+		
+		for (i = 0; i < 5; i++) {
 		let playerSelection = window.prompt('Pick your hand!');
-		playerSelection = playerSelection.toUpperCase();
+
+		while (playerSelection != 'ROCK' && playerSelection != 'SCISSORS' && playerSelection != 'PAPER') {
+			playerSelection = window.prompt('You typed something wrong!').toUpperCase();
+		}
+
 		playRound(playerSelection, computerPlay());
+		}	
 
 		console.log('You won ' + wins + ' times and lost ' + losses + ' times. There were ' + draws + ' draws!');
 		}
