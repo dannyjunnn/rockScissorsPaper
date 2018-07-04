@@ -68,10 +68,11 @@
 	function game() {
 		
 		for (i = 0; i < 5; i++) {
-		let playerSelection = window.prompt('Pick your hand!');
+		let playerSelection = window.prompt('Pick your hand!').toUpperCase();
 
 		while (playerSelection != 'ROCK' && playerSelection != 'SCISSORS' && playerSelection != 'PAPER') {
-			playerSelection = window.prompt('You typed something wrong!').toUpperCase();
+			playerSelection = window.prompt('You typed something wrong!');
+			playerSelection = playerSelection.toUpperCase();
 		}
 
 		playRound(playerSelection, computerPlay());
